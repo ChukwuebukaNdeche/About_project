@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About page</title>
+    <!--<link rel="stylesheet" href="./assets/bootstrap-5.0.2/dist/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(211, 208, 208);
+        }
+
+        .side_text {
+            background-color: rgb(233, 230, 230);
+            border-radius: 7px;
+        }
+
+        .btn_style {
+            background-color: rgb(155, 154, 154);
+            width: 33.4%;
+            padding: 10px 0;
+            border: none;
+            font-weight: bold;
+            margin-right: -5px;
+            transition: 0.2s;
+        }
+
+        .btn_border_left {
+            border-top-left-radius: 7px;
+        }
+
+        .btn_border_right {
+            border-top-right-radius: 7px;
+        }
+
+        .btn_style:hover {
+            background-color: rgb(194, 191, 191);
+        }
+
+        .btn_style.active {
+            background-color: rgb(233, 230, 230);
+        }
+
+        .content {
+            display: none;
+        }
+
+        .content.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="about text-center mt-5">About</h1>
+    <p class="text-center mb-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe, repudiandae.</p>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <img src="./assets/image/view.jpg" alt="image" class="img-fluid rounded">
+            </div>
+            <div class="col-md-6 mb-5">
+                <div class="side_text">
+                    <div class="btn_container">
+                        <button class=" btn_style btn_border_left active" data-target="history">History</button>
+                        <button class=" btn_style" data-target="vision">Vision</button>
+                        <button class=" btn_style btn_border_right" data-target="goals">Goals</button>
+                    </div>
+
+
+                    <div class="p-4 content active" id="history">
+                        <h6 class="fw-bold">History</h6>
+                        <p>Lorem ipsum, dolor sit amet consectetur
+                            adipisicing elit. Corporis, incidunt nisi nihil dolores quisquam cupiditate,
+                            illo iure ab, alias consequuntur doloremque delectus ullam nobis autem ex! In
+                            exercitationem eaque obcaecati. Fuga culpa optio delectus aspernatur facere ipsum
+                            quidem ut cupiditate inventore dolores ullam, id distinctio dicta ad harum eligendi
+                            doloribus laboriosam dolorum explicabo dolor non odit magni cumque in. Cupiditat
+                        </p>
+                    </div>
+                    <div class="p-4 content" id="vision">
+                        <h6 class="fw-bold">Vision</h6>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, voluptatibus.
+                            Molestias distinctio ipsam, eligendi expedita maiores totam quis doloribus aut
+                            nulla consectetur laudantium fugiat iste, a exercitationem inventore tempora
+                            assumenda ipsa, nam magni quam doloremque laborum perspiciatis suscipit?
+                        </p>
+                    </div>
+                    <div class="p-4 content" id="goals">
+                        <h6 class="fw-bold">Goals</h6>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur soluta
+                            veniam dolor earum sed et voluptate tempora velit expedita, tempore optio!
+                            Soluta dolores consequuntur dolor?
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let btnContainer = document.querySelector(".btn_container")
+        let btns = document.querySelectorAll(".btn_style")
+        let contents = document.querySelectorAll(".content")
+
+        btns.forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                let clicked = e.target.classList.contains("active")
+                let activeBtn = btnContainer.querySelector(".active")
+                if (!clicked) {
+                    activeBtn.classList.remove("active")
+                    e.target.classList.add("active")
+                }
+
+                let targetId = e.target.getAttribute("data-target")
+                let targetContent = document.getElementById(targetId)
+                contents.forEach(content => {
+                    content.classList.remove("active")
+                })
+                targetContent.classList.add("active")
+            })
+        })
+    </script>
+
+</body>
+
+</html>
